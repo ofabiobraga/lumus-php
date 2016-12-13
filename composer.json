@@ -1,0 +1,14 @@
+{
+    "name": "fabiobrasan/lumus-php",
+    "description": "Lumus is a minimal PHP Framework for lightweight web applications",
+    "keywords": ["framework", "lumus", "php", "mvc"],
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Fábio Braga",
+            "email": "fabiobrasan@gmail.com"
+        }
+    ],
+    "require": {},
+}
