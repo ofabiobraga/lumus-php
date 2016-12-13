@@ -11,6 +11,7 @@ class Router
 	public function __construct()
 	{
 		$this->request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+		$this->execute();
 	}
 
 	/**
@@ -20,7 +21,7 @@ class Router
 	 * @param  $action
 	 * @return  Router
 	 */
-	public function get($uri, $callback) : Router
+	public function get(string $uri, string $callback) : Router
 	{
 		$this->add('GET', $uri, $callback);
 		return $this;
@@ -33,7 +34,7 @@ class Router
 	 * @param  $action
 	 * @return Router
 	 */
-	public function post($uri, $callback) : Router
+	public function post(string $uri, string $callback) : Router
 	{
 		$this->add('POST', $uri, $callback);
 		return $this;
@@ -46,7 +47,7 @@ class Router
 	 * @param  $action
 	 * @return Router
 	 */
-	public function put($uri, $callback) : Router
+	public function put(string $uri, string $callback) : Router
 	{
 		$this->add('PUT', $uri, $callback);
 		return $this;
@@ -59,7 +60,7 @@ class Router
 	 * @param  string $action
 	 * @return Router
 	 */
-	public function delete($uri, $callback) : Router
+	public function delete(string $uri, string $callback) : Router
 	{
 		$this->add('DELETE', $uri, $callback);
 		return $this;
@@ -139,20 +140,20 @@ class Router
 	 * @param  $action
 	 * @return void
 	 */
-	protected function add($method, $uri, $callback)
+	protected function add(string $method, string $uri, string $callback)
 	{
 		$regex = "({[^/]+})";
-		$uri_regex = $this->parse($uri);
+		$uri_regex = $this->parseSingle($uri);
 		$callback = explode('@', $callback);
 		$controller = $callback[0];
 		$action = $callback[1];
 
 		preg_match_all($regex, $uri, $matches);
-		$matches = $this->parse($matches);
+		$matches = $this->parseMultiple($matches);
 
 		if(sizeof($matches) > 0) {
 			foreach($matches as $value) {
-				$params = $this->parse($value);
+				$params = $this->parseMultiple($value);
 				$regex = str_replace($params, $regex, $uri_regex);
 				$params = array_map(function() {}, array_flip($params));
 			}
@@ -161,7 +162,7 @@ class Router
 
 		$this->routes[] = [
             'method' => $method,
-            'regex' => $this->parse($regex),
+            'regex' => $this->parseSingle($regex),
             'uri' => $uri,
             'controller' => $controller,
             'action' => $action,
@@ -172,13 +173,25 @@ class Router
 	/**
 	 * Remove brackets from a string
 	 * @param string $string
-	 * @return array
+	 * @return string
 	 */
-	protected function parse($string)
+	protected function parseSingle(string $string) : string
 	{
 		$string = str_replace('{', '', $string);
 		$string = str_replace('}', '', $string);
 		return $string;
+	}
+
+	/**
+	 * Remove brackets from a string
+	 * @param array $array
+	 * @return array
+	 */
+	protected function parseMultiple(array $array) : array
+	{
+		$array = str_replace('{', '', $array);
+		$array = str_replace('}', '', $array);
+		return $array;
 	}
 
 	/**
@@ -196,7 +209,7 @@ class Router
 	 * @param array $params
 	 * @return void
 	 */
-	protected function setParams($index, $params)
+	protected function setParams(int $index, array $params)
 	{
 		$i = 0;
 		foreach($this->routes[$index]['params'] as $key => $value) {

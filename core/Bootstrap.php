@@ -16,6 +16,5 @@ class Bootstrap
 
         // Initialize routing system
         $route = new Router();
-        $route->execute();
     }
 }
