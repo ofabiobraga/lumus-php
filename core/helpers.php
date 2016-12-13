@@ -21,3 +21,53 @@ function app_path(string $path = '') : string
 {
 	return root_path('app/' . $path);
 }
+
+/**
+ * Get application views path.
+ * @param  string $path
+ * @return string
+ */
+function views_path(string $path = '') : string
+{
+	return app_path('views/' . $path);
+}
+
+/**
+ * Get application storage path.
+ * @param  string $path
+ * @return string
+ */
+function storage_path(string $path = '') : string
+{
+	return root_path('storage/' . $path);
+}
+
+/**
+ * Get application cache path.
+ * @param  string $path
+ * @return string
+ */
+function cache_path(string $path = '') : string
+{
+	return storage_path('cache/' . $path);
+}
+
+/**
+ * Get application logs path.
+ * @param  string $path
+ * @return string
+ */
+function logs_path(string $path = '') : string
+{
+	return root_path('logs/' . $path);
+}
+
+/**
+ * Get public path
+ * @param  string $path
+ * @return void
+ */
+function public_path(string $path = '') : string
+{
+	return root_path('public/' . $path);
+}
