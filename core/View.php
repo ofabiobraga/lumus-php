@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Philo\Blade\Blade;
+use Core\Twig;
 
 class View
 {
@@ -18,14 +18,15 @@ class View
 	}
 
 	/**
-	 * Render the view using Blade
+	 * Render the view using Twig
 	 * @param  string $view
 	 * @param  array  $params
 	 * @return void
 	 */
 	protected static function render(string $view, array $params = [])
 	{
-		$blade = new Blade(views_path(), cache_path('views'));
-		echo $blade->view()->make($view, $params)->render();
+		$twig = new Twig();
+		echo $twig->render($view, $params);
 	}
+
 }
