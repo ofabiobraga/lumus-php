@@ -1,1 +1,5 @@
 /vendor/
+storage/cache/views/*
+!storage/cache/views/.gitkeep
+storage/cache/logs/*
+!storage/cache/logs/.gitkeep 
