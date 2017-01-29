@@ -71,3 +71,18 @@ function public_path(string $path = '') : string
 {
 	return root_path('public/' . $path);
 }
+
+/**
+ * Get config file content
+ * @param  string $config
+ * @return void
+ */
+function config(string $config)
+{
+	$file = root_path('config/') . $config . '.php';
+
+	if(!file_exists($file))
+		throw new Exception("File config '{$config}' does not exists", 1);
+
+	return include($file);
+}
