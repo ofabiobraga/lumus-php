@@ -143,17 +143,17 @@ class Router
 	protected function add(string $method, string $uri, string $callback)
 	{
 		$regex = "({[^/]+})";
-		$uri_regex = $this->parseSingle($uri);
+		$uri_regex = $this->parseRegex($uri);
 		$callback = explode('@', $callback);
 		$controller = $callback[0];
 		$action = $callback[1];
 
 		preg_match_all($regex, $uri, $matches);
-		$matches = $this->parseMultiple($matches);
+		$matches = $this->parseMatches($matches);
 
 		if(sizeof($matches) > 0) {
 			foreach($matches as $value) {
-				$params = $this->parseMultiple($value);
+				$params = $this->parseMatches($value);
 				$regex = str_replace($params, $regex, $uri_regex);
 				$params = array_map(function() {}, array_flip($params));
 			}
@@ -162,7 +162,7 @@ class Router
 
 		$this->routes[] = [
             'method' => $method,
-            'regex' => $this->parseSingle($regex),
+            'regex' => $this->parseRegex($regex),
             'uri' => $uri,
             'controller' => $controller,
             'action' => $action,
@@ -175,7 +175,7 @@ class Router
 	 * @param string $string
 	 * @return string
 	 */
-	protected function parseSingle(string $string) : string
+	protected function parseRegex(string $string) : string
 	{
 		$string = str_replace('{', '', $string);
 		$string = str_replace('}', '', $string);
@@ -187,7 +187,7 @@ class Router
 	 * @param array $array
 	 * @return array
 	 */
-	protected function parseMultiple(array $array) : array
+	protected function parseMatches(array $array) : array
 	{
 		$array = str_replace('{', '', $array);
 		$array = str_replace('}', '', $array);
