@@ -22,5 +22,4 @@ class Mail extends PHPMailer
         $this->CharSet = $config['charset'];
         $this->SMTPAuth = true;
     }
-
 }

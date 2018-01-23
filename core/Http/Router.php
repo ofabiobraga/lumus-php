@@ -3,9 +3,29 @@ namespace Core\Http;
 
 class Router
 {
+	/**
+	 * Registred routes
+	 * @var array
+	 */
 	protected $routes = array();
+
+	/**
+	 * Current HTTP Request URI
+	 * @var string
+	 */
 	protected $request_uri = null;
+
+	/**
+	 * Allowed HTTP methods
+	 * @var array
+	 */
 	protected $allowed_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
+
+	/**
+	 * Route callback storage each route
+	 * controller, actions e params
+	 * @var array
+	 */
 	protected $callback = null;
 
 	public function __construct()

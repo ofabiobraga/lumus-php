@@ -6,7 +6,6 @@ use Core\Translate\TimeString;
 
 class Cookie
 {
-
     /**
      * Get a cookie
      * @param  string $name
@@ -58,5 +57,4 @@ class Cookie
         if(self::exists($name))
             self::set($name, '', time() - 3600);
     }
-
 }

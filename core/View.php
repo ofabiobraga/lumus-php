@@ -46,7 +46,4 @@ class View
 	{
 		echo self::$twig->render($view, $params);
 	}
-
-
-
 }

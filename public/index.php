@@ -1,7 +1,7 @@
 <?php
 /**
  * Lumus-PHP
- * A minimal PHP Framework for lightweight web applications
+ * A minimal PHP Framework for lightweight web apps
  * @package Lumus-PHP
  * @author Fábio Braga
  * @link http://github.com/fabiobrasan/lumus-php

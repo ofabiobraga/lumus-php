@@ -1,6 +1,6 @@
 {
     "name": "fabiobrasan/lumus-php",
-    "description": "Lumus is a minimal PHP Framework for lightweight web applications",
+    "description": "Lumus is a minimal PHP Framework for lightweight web apps",
     "keywords": ["framework", "lumus", "php", "mvc"],
     "license": "MIT",
     "type": "project",

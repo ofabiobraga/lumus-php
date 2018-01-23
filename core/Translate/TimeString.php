@@ -4,7 +4,6 @@ namespace Core\Translate;
 
 class TimeString
 {
-
     /**
      * Translate a human-friendly time format to
      * a DateTime unix timestamp

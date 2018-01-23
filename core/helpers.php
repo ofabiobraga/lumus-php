@@ -86,3 +86,22 @@ function config(string $config)
 
 	return include($file);
 }
+
+/**
+ * Get Application class instance
+ * @return \Core\Application
+ */
+function app()
+{
+	return \Core\Application::getInstance();
+}
+
+/**
+ * Make a new View
+ * @param  string $view
+ * @return void
+ */
+function view(string $view)
+{
+	return \Core\View::make($view);
+}

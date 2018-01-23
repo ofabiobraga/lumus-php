@@ -11,7 +11,7 @@ class Bootstrap
         // Define global constants
         define('ROOT', __DIR__ . '/../');
 
-        // Poll framework helpers
+        // Include framework helpers
 		require_once 'helpers.php';
 
         // Initialize routing system
