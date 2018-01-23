@@ -91,7 +91,7 @@ function config(string $config)
  * Get Application class instance
  * @return \Core\Application
  */
-function app()
+function app() : \Core\Application
 {
 	return \Core\Application::getInstance();
 }

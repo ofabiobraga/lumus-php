@@ -177,7 +177,6 @@ class Router
 				$regex = str_replace($params, $regex, $uri_regex);
 				$params = array_map(function() {}, array_flip($params));
 			}
-
 		}
 
 		$this->routes[] = [

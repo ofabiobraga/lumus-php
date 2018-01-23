@@ -25,7 +25,7 @@ class Application
      * Application instance for singleton
      * @var \Core\Application
      */
-    static public function getInstance()
+    static public function getInstance() : \Core\Application
     {
         if(is_null(self::$instance))
             self::$instance = new Application();

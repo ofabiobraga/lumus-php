@@ -26,7 +26,7 @@ class TimeString
      * @param  string $string
      * @return string
      */
-    protected static function parse(string $string)
+    protected static function parse(string $string) : string
     {
         $string_r = explode(' ', $string);
 
