@@ -105,3 +105,12 @@ function view(string $view)
 {
 	return \Core\View::make($view);
 }
+
+/**
+ * Get Http\Request class instance
+ * @return \Core\Http\Request
+ */
+function request() : \Core\Http\Request
+{
+	return \Core\Http\Request::getInstance();
+}
